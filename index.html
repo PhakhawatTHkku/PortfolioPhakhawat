@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio — ชื่อคุณ</title>
+  <meta name="description" content="Portfolio ของนักศึกษา/นักพัฒนา — ใช้สมัครฝึกงาน" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Top navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#home">ชื่อคุณ</a>
+      <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <nav id="nav" class="nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Home / Hero -->
+  <main>
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>สวัสดี — ผม/ฉันชื่อ ชื่อคุณ</h1>
+          <p class="lead">นักพัฒนาที่สนใจด้าน Web / Software — กำลังมองหาการฝึกงาน</p>
+          <p>สั้น ๆ เกี่ยวกับตัวเอง: เน้นสิ่งที่ทำได้และประสบการณ์ที่เกี่ยวข้อง</p>
+          <p class="cta-row">
+            <a class="btn" href="#projects">ดูผลงาน</a>
+            <a class="btn ghost" href="#contact">ติดต่อ</a>
+          </p>
+        </div>
+        <div class="hero-card">
+          <!-- ตัวอย่างข้อมูลสั้นที่แก้ไขได้ง่าย -->
+          <ul class="meta">
+            <li><strong>Education:</strong> B.Sc. Computer Science (ปีสำเร็จ)</li>
+            <li><strong>Location:</strong> เมือง, ประเทศ</li>
+            <li><strong>Role:</strong> Frontend / Fullstack Intern</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2>About Me</h2>
+        <p>แก้ไขข้อความนี้เพื่ออธิบายการศึกษา ประสบการณ์สั้น ๆ และทักษะที่เกี่ยวข้อง</p>
+        <div class="about-grid">
+          <div>
+            <h3>การศึกษา</h3>
+            <p>ปริญญา, สาขา, สถาบัน — (ปี)</p>
+          </div>
+          <div>
+            <h3>ทักษะที่เด่น</h3>
+            <ul>
+              <li>JavaScript / HTML / CSS</li>
+              <li>Node.js / Express (พื้นฐาน)</li>
+              <li>Git, GitHub</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section subtle">
+      <div class="container">
+        <h2>Skills</h2>
+        <p>Programming / Tools — ปรับระดับได้ง่าย</p>
+        <div class="skill-list">
+          <div class="skill">
+            <div class="skill-head"><span>JavaScript</span><span>80%</span></div>
+            <div class="skill-bar"><div style="width:80%"></div></div>
+          </div>
+          <div class="skill">
+            <div class="skill-head"><span>HTML &amp; CSS</span><span>90%</span></div>
+            <div class="skill-bar"><div style="width:90%"></div></div>
+          </div>
+          <div class="skill">
+            <div class="skill-head"><span>React (พื้นฐาน)</span><span>50%</span></div>
+            <div class="skill-bar"><div style="width:50%"></div></div>
+          </div>
+          <div class="skill">
+            <div class="skill-head"><span>Git / Github</span><span>85%</span></div>
+            <div class="skill-bar"><div style="width:85%"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects (rendered by script.js) -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2>Projects</h2>
+        <p>ตัวอย่างผลงานที่เคยทำ — คลิกดูรายละเอียดหรือโค้ดต้นทาง</p>
+        <div id="projects-grid" class="projects-grid">
+          <!-- Project cards will be injected here by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section subtle">
+      <div class="container contact-grid">
+        <div>
+          <h2>Contact</h2>
+          <p>อยากให้แก้เอกสารตรงนี้สำหรับข้อมูลจริง</p>
+          <ul class="contact-list">
+            <li><strong>Email:</strong> <a href="mailto:you@example.com">you@example.com</a></li>
+            <li><strong>GitHub:</strong> <a href="https://github.com/your-username" target="_blank" rel="noopener">github.com/your-username</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Message</h3>
+          <form action="mailto:you@example.com" method="post" enctype="text/plain" class="contact-form">
+            <label>ชื่อ
+              <input type="text" name="name" placeholder="ชื่อของคุณ">
+            </label>
+            <label>ข้อความ
+              <textarea name="message" rows="4" placeholder="ข้อความของคุณ"></textarea>
+            </label>
+            <p><button class="btn" type="submit">ส่งอีเมล</button></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© ปี — ชื่อคุณ — สร้างเพื่อการสมัครฝึกงาน</small>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
