@@ -11,9 +11,14 @@
   <!-- Top navigation -->
   <header class="site-header">
     <div class="container header-inner">
-      <a class="logo" href="#home">ภควรรธ บุญเรือง</a>
+      <div class="header-left">
+        <a class="logo" href="#home">ภควรรธ บุญเรือง</a>
+        <div class="theme-controls">
+          <span id="theme-status" class="theme-status">Bright Mode</span>
+          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+        </div>
+      </div>
       <div class="header-controls">
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
         <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">☰</button>
       </div>
       <nav id="nav" class="nav">
@@ -31,7 +36,7 @@
     <section id="home" class="hero">
       <div class="container hero-inner">
         <div class="hero-text">
-          <h1>สวัสดี — ผมชื่อ ภควรรธ บุญเรือง</h1>
+          <h1>สวัสดีครับ — ผมชื่อ ภควรรธ บุญเรือง</h1>
           <p class="lead">UX/UI Designer & Software Engineer — กำลังมองหาการฝึกงาน</p>
           <p>ชอบพูดคุยกับผู้คนใหม่และชื่นชอบการทำงานเป็นทีม สนใจด้านการออกแบบประสบการณ์ผู้ใช้และการพัฒนาซอฟต์แวร์ที่มีคุณภาพ</p>
           <p class="cta-row">
@@ -150,7 +155,7 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">
+    <div class="container footer-inner">
       <small>© 2024 — ภควรรธ บุญเรือง — UX/UI Designer & Developer</small>
     </div>
   </footer>
@@ -158,3 +163,31 @@
   <script src="Asset/Javascript/script.js"></script>
 </body>
 </html>
+
+<!-- Project Modal -->
+<div id="project-modal" class="modal-overlay" style="display: none;">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 id="modal-title"></h3>
+      <button id="modal-close" class="modal-close-btn">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div id="modal-images" class="modal-images"></div>
+      <div class="modal-details">
+        <p id="modal-description"></p>
+        <div class="modal-tags" id="modal-tags"></div>
+        <div class="modal-actions" id="modal-actions"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Image Lightbox -->
+<div id="lightbox" class="lightbox-overlay" style="display: none;">
+  <div class="lightbox-content">
+    <img id="lightbox-image" src="" alt="">
+    <button id="lightbox-close" class="lightbox-close-btn">&times;</button>
+    <button id="lightbox-prev" class="lightbox-nav-btn lightbox-prev">‹</button>
+    <button id="lightbox-next" class="lightbox-nav-btn lightbox-next">›</button>
+  </div>
+</div>

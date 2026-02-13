@@ -9,6 +9,7 @@
 // === Dark mode theme toggle ===
 function setupThemeToggle(){
   const toggle = document.getElementById('theme-toggle');
+  const statusText = document.getElementById('theme-status');
   const html = document.documentElement;
   
   // Check localStorage for saved theme preference
@@ -28,29 +29,47 @@ function setupThemeToggle(){
 
 function updateThemeToggleIcon(){
   const toggle = document.getElementById('theme-toggle');
+  const statusText = document.getElementById('theme-status');
   const isDark = document.documentElement.classList.contains('dark-mode');
   toggle.textContent = isDark ? '☀️' : '🌙';
+  statusText.textContent = isDark ? 'Dark Mode' : 'Bright Mode';
 }
 
 // === Editable sample data: แก้ข้อมูลตัวอย่างตรงนี้ ===
 const sampleProjects = [
   {
-    title: 'เว็บไซต์ Portfolio (This site)',
-    description: 'เว็บ Portfolio ที่ทำจาก HTML/CSS/JS พร้อม Dark Mode และ UX interactions',
-    tags: ['HTML','CSS','JS','UX'],
-    url: '#'
+    title: 'KKU Archery Website Design',
+    description: 'การออกแบบเว็บไซต์สำหรับชมรมธนู KKU รวมถึงระบบจัดการข้อมูลนักธนู การจองสนาม และระบบจัดการคะแนน',
+    tags: ['UI/UX Design', 'Figma', 'Prototyping'],
+    images: [
+      'Asset/img/Archery/Mainpage.png',
+      'Asset/img/Archery/DashBoard.png',
+      'Asset/img/Archery/LoginPage.png',
+      'Asset/img/Archery/Profile.png',
+      'Asset/img/Archery/Point.png'
+    ],
+    details: 'โปรเจคนี้เป็นการออกแบบ UX/UI สำหรับเว็บไซต์ชมรมธนูของมหาวิทยาลัยขอนแก่น เน้นการใช้งานที่ง่ายและมีประสิทธิภาพสำหรับนักศึกษาและผู้ดูแลชมรม รวมถึงระบบจัดการข้อมูลที่ครบถ้วน'
   },
   {
-    title: 'Todo App',
-    description: 'แอปบริหารงานง่าย ๆ ด้วย LocalStorage, ES6 และ Responsive Design',
-    tags: ['JavaScript','LocalStorage'],
-    url: '#'
+    title: 'Nurse Project',
+    description: 'เว็บแอปพลิเคชันสำหรับจัดการข้อมูลพยาบาล รวมถึงระบบจัดการตารางงานและข้อมูลผู้ป่วย',
+    tags: ['Vue.js', 'Node.js', 'MySQL', 'UI Design'],
+    images: [
+      'Asset/img/NurseProject/Nurse_Main.png',
+      'Asset/img/NurseProject/Nurse_Dashboard.png',
+      'Asset/img/NurseProject/Nurse_Credit.png'
+    ],
+    details: 'ระบบจัดการข้อมูลสำหรับพยาบาล พัฒนาด้วย Vue.js และ Node.js รองรับการจัดการตารางงาน การบันทึกข้อมูลผู้ป่วย และระบบรายงาน มีการออกแบบ UI ที่ใช้งานง่ายและ responsive',
+    url: 'https://nurse-project-red.vercel.app/'
   },
   {
-    title: 'API Service (Node)',
-    description: 'REST API เบื้องต้นด้วย Node.js + Express พร้อม MongoDB integration',
-    tags: ['Node.js','Express'],
-    url: '#'
+    title: 'HoloGraphic3d Earthquake Data',
+    description: 'แอปพลิเคชันแสดงข้อมูลแผ่นดินไหวในรูปแบบ 3D Holographic สำหรับการวิเคราะห์และติดตามข้อมูลแผ่นดินไหว',
+    tags: ['Flutter', '3D Graphics', 'Data Visualization', 'Mobile App'],
+    images: [
+      'Asset/img/Holo/Holo1.png'
+    ],
+    details: 'แอปพลิเคชันมือถือที่แสดงข้อมูลแผ่นดินไหวในรูปแบบ 3D holographic พัฒนาด้วย Flutter ช่วยให้ผู้ใช้สามารถวิเคราะห์และติดตามข้อมูลแผ่นดินไหวได้อย่างมีประสิทธิภาพ'
   }
 ];
 
@@ -83,9 +102,12 @@ function renderProjects(projects){
     actions.className = 'project-actions';
     const link = document.createElement('a');
     link.className = 'btn';
-    link.href = p.url || '#';
-    link.textContent = 'View';
-    link.target = '_blank';
+    link.href = '#';
+    link.textContent = 'View Details';
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      openProjectModal(p);
+    });
     actions.appendChild(link);
 
     card.appendChild(title);
@@ -136,4 +158,164 @@ document.addEventListener('DOMContentLoaded', () => {
   renderProjects(sampleProjects); // render sample projects (edit sampleProjects above)
   setupNavToggle();
   setupSmoothScroll();
+  setupModalEvents(); // Setup modal events
+  setupLightboxEvents(); // Setup lightbox events
 });
+
+// === Modal Functions ===
+function openProjectModal(project) {
+  const modal = document.getElementById('project-modal');
+  const title = document.getElementById('modal-title');
+  const description = document.getElementById('modal-description');
+  const imagesContainer = document.getElementById('modal-images');
+  const tagsContainer = document.getElementById('modal-tags');
+  const actionsContainer = document.getElementById('modal-actions');
+
+  // Set title and description
+  title.textContent = project.title;
+  description.textContent = project.details || project.description;
+
+  // Add images with click handlers for lightbox
+  imagesContainer.innerHTML = '';
+  project.images.forEach((imgSrc, index) => {
+    const img = document.createElement('img');
+    img.src = imgSrc;
+    img.alt = project.title;
+    img.loading = 'lazy';
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', () => openLightbox(project.images, index));
+    imagesContainer.appendChild(img);
+  });
+
+  // Add tags
+  tagsContainer.innerHTML = '';
+  project.tags.forEach(tag => {
+    const span = document.createElement('span');
+    span.className = 'tag';
+    span.textContent = tag;
+    tagsContainer.appendChild(span);
+  });
+
+  // Add actions (website link if available)
+  actionsContainer.innerHTML = '';
+  if (project.url) {
+    const link = document.createElement('a');
+    link.className = 'btn';
+    link.href = project.url;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.textContent = 'Visit Website';
+    actionsContainer.appendChild(link);
+  }
+
+  // Show modal
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden'; // Prevent background scroll
+}
+
+function closeProjectModal() {
+  const modal = document.getElementById('project-modal');
+  modal.style.display = 'none';
+  document.body.style.overflow = ''; // Restore scroll
+}
+
+function setupModalEvents() {
+  const modal = document.getElementById('project-modal');
+  const closeBtn = document.getElementById('modal-close');
+
+  // Close on button click
+  closeBtn.addEventListener('click', closeProjectModal);
+
+  // Close on overlay click
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeProjectModal();
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.style.display === 'flex') {
+      closeProjectModal();
+    }
+  });
+}
+
+// === Lightbox Functions ===
+let currentImages = [];
+let currentImageIndex = 0;
+
+function openLightbox(images, startIndex) {
+  currentImages = images;
+  currentImageIndex = startIndex;
+  
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-image');
+  
+  lightboxImg.src = images[startIndex];
+  lightbox.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  
+  // Update navigation buttons visibility
+  updateLightboxNavigation();
+}
+
+function closeLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  lightbox.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function updateLightboxNavigation() {
+  const prevBtn = document.getElementById('lightbox-prev');
+  const nextBtn = document.getElementById('lightbox-next');
+  
+  prevBtn.style.display = currentImages.length > 1 ? 'flex' : 'none';
+  nextBtn.style.display = currentImages.length > 1 ? 'flex' : 'none';
+}
+
+function navigateLightbox(direction) {
+  currentImageIndex += direction;
+  
+  if (currentImageIndex < 0) {
+    currentImageIndex = currentImages.length - 1;
+  } else if (currentImageIndex >= currentImages.length) {
+    currentImageIndex = 0;
+  }
+  
+  const lightboxImg = document.getElementById('lightbox-image');
+  lightboxImg.src = currentImages[currentImageIndex];
+}
+
+function setupLightboxEvents() {
+  const lightbox = document.getElementById('lightbox');
+  const closeBtn = document.getElementById('lightbox-close');
+  const prevBtn = document.getElementById('lightbox-prev');
+  const nextBtn = document.getElementById('lightbox-next');
+  const lightboxImg = document.getElementById('lightbox-image');
+
+  // Close lightbox
+  closeBtn.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // Navigation
+  prevBtn.addEventListener('click', () => navigateLightbox(-1));
+  nextBtn.addEventListener('click', () => navigateLightbox(1));
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (lightbox.style.display === 'flex') {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      } else if (e.key === 'ArrowLeft' && currentImages.length > 1) {
+        navigateLightbox(-1);
+      } else if (e.key === 'ArrowRight' && currentImages.length > 1) {
+        navigateLightbox(1);
+      }
+    }
+  });
+}
