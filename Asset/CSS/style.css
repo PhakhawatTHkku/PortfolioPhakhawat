@@ -117,6 +117,12 @@ html.dark-mode .project-card:hover{box-shadow:0 16px 32px rgba(96,165,250,0.25)}
 
 /* Contact */
 .contact-grid{display:grid;grid-template-columns:1fr;gap:24px}
+.contact-list{list-style:none;padding:0;margin:12px 0 0}
+.contact-list li{margin:10px 0;color:var(--primary);font-size:16px;line-height:1.6}
+.contact-list strong{color:var(--primary)}
+.contact-text{color:var(--primary);font-weight:500}
+.contact-list a{color:var(--primary);font-weight:500;text-decoration:underline;text-underline-offset:3px}
+.contact-list a:hover{color:var(--accent)}
 .contact-form label{display:block;margin-bottom:12px;font-size:14px}
 .contact-form input,.contact-form textarea{width:100%;padding:10px;border:1px solid #e6e9ef;border-radius:8px}
 
