@@ -67,9 +67,25 @@ const sampleProjects = [
     description: 'แอปพลิเคชันแสดงข้อมูลแผ่นดินไหวในรูปแบบ 3D Holographic สำหรับการวิเคราะห์และติดตามข้อมูลแผ่นดินไหว',
     tags: ['Flutter', '3D Graphics', 'Data Visualization', 'Mobile App'],
     images: [
-      'Asset/img/Holo/Holo1.png'
+      'Asset/img/Holo/holo1.png'
     ],
     details: 'แอปพลิเคชันมือถือที่แสดงข้อมูลแผ่นดินไหวในรูปแบบ 3D holographic พัฒนาด้วย Flutter ช่วยให้ผู้ใช้สามารถวิเคราะห์และติดตามข้อมูลแผ่นดินไหวได้อย่างมีประสิทธิภาพ'
+  },
+  {
+    title: 'Calendar X',
+    description: 'ระบบปฏิทินและจัดการกิจกรรมสำหรับผู้ใช้งานทั่วไป รองรับการสร้าง แก้ไข และติดตามตารางงานแบบใช้งานง่าย',
+    tags: ['UI/UX Design', 'Calendar System', 'Web App', 'Frontend Development'],
+    images: [
+      'Asset/img/CalendarX/Mainmenu.png',
+      'Asset/img/CalendarX/Calendar.png',
+      'Asset/img/CalendarX/Create.png',
+      'Asset/img/CalendarX/Choose.png',
+      'Asset/img/CalendarX/CalendarAdd.png',
+      'Asset/img/CalendarX/ProfileU.png',
+      'Asset/img/CalendarX/Login.png',
+      'Asset/img/CalendarX/Register.png'
+    ],
+    details: 'Calendar X เป็นโปรเจกต์ที่ออกแบบและพัฒนาระบบจัดการตารางเวลาและกิจกรรม โดยโฟกัสที่ประสบการณ์ผู้ใช้ให้เพิ่มกิจกรรม จัดหมวดหมู่ และติดตามงานได้สะดวก พร้อมหน้าจัดการโปรไฟล์และระบบเข้าสู่ระบบ/สมัครสมาชิกเพื่อการใช้งานที่ต่อเนื่อง'
   }
 ];
 
